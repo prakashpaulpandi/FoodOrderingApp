@@ -1,14 +1,14 @@
-# 🍔 FoodAuto
+# 🍔 MealMate
 
 A **Full Stack Food Ordering Web Application** built using **Java, JSP, Servlets, JDBC, MySQL, HTML, CSS, and JavaScript**.
 
-FoodAuto simulates the workflow of a modern food delivery platform where users can register, browse restaurants, order food, manage their cart, and track their orders through a clean and user-friendly interface.
+MealMate simulates the workflow of a modern food delivery platform where users can register, browse restaurants, order food, manage their cart, and track their orders through a clean and user-friendly interface.
 
 ---
 
 ## 📖 About the Project
 
-FoodAuto is a full-stack web application developed to gain practical experience in Java web development and understand how online food ordering systems work.
+MealMate is a full-stack web application developed to gain practical experience in Java web development and understand how online food ordering systems work.
 
 The project demonstrates user authentication, restaurant browsing, menu management, shopping cart functionality, order processing, session management, and database connectivity using Java EE technologies.
 
@@ -80,7 +80,7 @@ MySQL Database
 ## 📂 Project Structure
 
 ```
-FoodAuto
+MealMate
 │
 ├── src
 │   ├── Controller
@@ -163,7 +163,7 @@ FoodAuto
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Mjn-001/Food-Auto.git
+git clone https://github.com/prakashpaulpandi/FoodOrderingApp.git
 ```
 
 ### 2. Open in Eclipse
@@ -183,7 +183,7 @@ Update your JDBC credentials before running.
 Example:
 
 ```java
-String url = "jdbc:mysql://localhost:3306/foodauto";
+String url = "jdbc:mysql://localhost:3306/mealmate_db";
 String username = "root";
 String password = "your_password";
 ```
@@ -193,7 +193,7 @@ String password = "your_password";
 Start Apache Tomcat and open:
 
 ```
-http://localhost:8080/FoodAuto/
+http://localhost:8080/MealMate/
 ```
 
 ---
@@ -261,11 +261,11 @@ Through this project, I gained practical experience in:
 
 ## 👨‍💻 Developer
 
-**Manjunath N**
+**Prakash P**
 
-Engineering Student | Java Full Stack Developer | Content Creator
+Engineering Student | Java Full Stack Developer 
 
-**GitHub:** https://github.com/Mjn-001
+**GitHub:** https://github.com/prakashpaulpandi
 
 ---
 
