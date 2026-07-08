@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | MealMate - Order Food Online</title>
+    <meta name="description" content="Sign in to MealMate and discover the best restaurants, cafes and food near you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0F0F1A;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .login-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .login-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&fit=crop') center/cover no-repeat;
+            filter: brightness(0.25) saturate(1.2);
+        }
+
+        .login-bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #FF4757, transparent);
+            top: -200px; left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #FF6B35, transparent);
+            bottom: -150px; right: -100px;
+            animation-delay: 3s;
+        }
+
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, #A29BFE, transparent);
+            top: 50%; left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Login card */
+        .login-wrap {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 440px;
+            padding: 20px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .login-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 44px 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .login-logo .brand-name {
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF4757, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-logo .brand-emoji {
+            font-size: 30px;
+            -webkit-text-fill-color: initial;
+        }
+
+        .login-tagline {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            margin-bottom: 36px;
+        }
+
+        .login-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .login-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 28px;
+        }
+
+        .mm-form-group {
+            margin-bottom: 18px;
+        }
+
+        .mm-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .mm-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .mm-input::placeholder { color: rgba(255,255,255,0.3); }
+
+        .mm-input:focus {
+            border-color: #FF4757;
+            background: rgba(255,71,87,0.08);
+            box-shadow: 0 0 0 4px rgba(255,71,87,0.15);
+            outline: none;
+        }
+
+        .mm-input-icon { position: relative; }
+        .mm-input-icon i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 16px;
+        }
+        .mm-input-icon .mm-input { padding-left: 46px; }
+
+        .mm-password-wrap { position: relative; }
+        .mm-password-wrap .mm-input { padding-right: 48px; }
+        .mm-password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: rgba(255,255,255,0.4);
+            transition: color 0.2s;
+        }
+        .mm-password-toggle:hover { color: #FF4757; }
+
+        .login-extras {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .login-remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+
+        .login-remember input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #FF4757;
+            cursor: pointer;
+        }
+
+        .login-forgot {
+            color: #FF6B81;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-forgot:hover { color: #FF4757; }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #FF4757, #FF6B35);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 6px 25px rgba(255,71,87,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(255,71,87,0.5);
+        }
+
+        .login-btn:active { transform: translateY(0); }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .login-divider span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .login-register {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .login-register a {
+            color: #FF6B81;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .login-register a:hover { color: #FF4757; }
+
+        /* Error message */
+        .mm-error {
+            background: rgba(255,71,87,0.12);
+            border: 1px solid rgba(255,71,87,0.3);
+            color: #FF6B81;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Theme toggle in corner */
+        .corner-theme-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        @media (max-width: 480px) {
+            .login-card { padding: 32px 24px; border-radius: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-bg">
+        <div class="login-bg-orb orb-1"></div>
+        <div class="login-bg-orb orb-2"></div>
+        <div class="login-bg-orb orb-3"></div>
+    </div>
+
+    <div class="corner-theme-btn">
+        <button class="mm-theme-toggle" id="themeToggle" title="Toggle theme" style="border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:white;">🌙</button>
+    </div>
+
+    <div class="login-wrap">
+        <div class="login-card">
+            <div class="login-logo">
+                <div class="brand-name"><span class="brand-emoji">🍽️</span> MealMate</div>
+            </div>
+            <p class="login-tagline">Discover • Order • Enjoy</p>
+
+            <h2 class="login-title">Welcome back!</h2>
+            <p class="login-subtitle">Sign in to continue ordering your favorites</p>
+
+            <!-- Error message placeholder -->
+            <div id="errorMessageContainer"></div>
+
+            <form action="LoginServlet" method="POST">
+
+                <div class="mm-form-group">
+                    <label class="mm-label" for="email">Email Address</label>
+                    <div class="mm-input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" name="email" class="mm-input" placeholder="you@example.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="mm-form-group">
+                    <label class="mm-label" for="password">Password</label>
+                    <div class="mm-password-wrap">
+                        <input type="password" id="password" name="password" class="mm-input" placeholder="Enter your password" required autocomplete="current-password">
+                        <button type="button" class="mm-password-toggle" aria-label="Toggle password visibility">👁️</button>
+                    </div>
+                </div>
+
+                <div class="login-extras">
+                    <label class="login-remember">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="#" class="login-forgot">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginSubmitBtn">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Sign In to MealMate
+                </button>
+
+            </form>
+
+            <div class="login-divider"><span>New here?</span></div>
+
+            <p class="login-register">
+                Don't have an account? <a href="register.html">Create one free →</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Parse URL parameters to show login error
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === 'invalid') {
+            const container = document.getElementById('errorMessageContainer');
+            if (container) {
+                container.innerHTML = `
+                    <div class="mm-error">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Invalid email or password. Please try again.
+                    </div>
+                `;
+            }
+        }
+
+        // Login button loading state
+        document.querySelector('form').addEventListener('submit', function() {
+            const btn = document.getElementById('loginSubmitBtn');
+            if (btn) {
+                btn.innerHTML = '<span style="animation:spin 1s linear infinite;display:inline-block">⟳</span> Signing in...';
+                btn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
