@@ -22,22 +22,37 @@
     RestaurantDAO restaurantDAO = new RestaurantDAOImple();
     List<Restaurant> restaurantList = restaurantDAO.getAllRestaurants();
 
-    // 3. INTELLIGENT IMAGE ENGINE
-    Map<String, String> imageMap = new HashMap<>();
-    imageMap.put("south indian", "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?q=80&w=800");
-    imageMap.put("biryani", "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=800");
-    imageMap.put("pizza", "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800");
-    imageMap.put("fast food", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800");
-    imageMap.put("burger", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800");
-    imageMap.put("chinese", "https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=800");
-    imageMap.put("ice cream", "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=800");
-    imageMap.put("dessert", "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800");
-    imageMap.put("healthy", "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800");
-    imageMap.put("bbq", "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800");
-    imageMap.put("chicken", "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800");
-    imageMap.put("seafood", "https://images.unsplash.com/photo-1534482421-64566f976cfa?q=80&w=800");
-    imageMap.put("north indian", "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=800");
-    imageMap.put("mughlai", "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?q=80&w=800");
+    // 3. RESTAURANT NAME-BASED IMAGE ENGINE (all URLs verified working)
+    java.util.LinkedHashMap<String, String> imageMap = new java.util.LinkedHashMap<>();
+    // --- BRANDED CHAINS ---
+    imageMap.put("domino",            "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800");
+    imageMap.put("pizza hut",         "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800");
+    imageMap.put("burger king",       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800");
+    imageMap.put("kfc",               "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800");
+    imageMap.put("subway",            "https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=800");
+    imageMap.put("mcdonald",          "https://images.unsplash.com/photo-1561758033-d89a9ad46330?q=80&w=800");
+    imageMap.put("a2b",               "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?q=80&w=800");
+    imageMap.put("ananda bhavan",     "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?q=80&w=800");
+    imageMap.put("behrouz",           "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=800");
+    imageMap.put("hyderabad biryani", "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=800");
+    imageMap.put("ss hyderabad",      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=800");
+    imageMap.put("barbeque",          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800");
+    imageMap.put("barbecue",          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800");
+    // --- CUISINE TYPE FALLBACKS ---
+    imageMap.put("biryani",           "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=800");
+    imageMap.put("pizza",             "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800");
+    imageMap.put("burger",            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800");
+    imageMap.put("south indian",      "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?q=80&w=800");
+    imageMap.put("north indian",      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=800");
+    imageMap.put("chinese",           "https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=800");
+    imageMap.put("bbq",               "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800");
+    imageMap.put("chicken",           "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800");
+    imageMap.put("healthy",           "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800");
+    imageMap.put("mughlai",           "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?q=80&w=800");
+    imageMap.put("dessert",           "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800");
+    imageMap.put("fast food",         "https://images.unsplash.com/photo-1561758033-d89a9ad46330?q=80&w=800");
+    imageMap.put("sweets",            "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800");
+    imageMap.put("street food",       "https://images.unsplash.com/photo-1544025162-8315ea07fc0a?q=80&w=800");
 %>
 
 <!DOCTYPE html>
@@ -52,7 +67,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Offers banner */
         .mm-offers-strip {
             background: linear-gradient(90deg, #FF4757, #FF6B35, #FFC312, #2ED573, #1E90FF, #FF4757);
             background-size: 300% 100%;
@@ -66,7 +80,6 @@
         }
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
 
-        /* Stats bar */
         .mm-stats-bar {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border-color);
@@ -76,7 +89,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .mm-stats-item {
             display: flex;
             align-items: center;
@@ -85,16 +97,9 @@
             color: var(--text-muted);
             font-weight: 600;
         }
+        .mm-stats-item span:first-child { font-size: 18px; }
+        .mm-stats-item strong { color: var(--text-primary); }
 
-        .mm-stats-item span:first-child {
-            font-size: 18px;
-        }
-
-        .mm-stats-item strong {
-            color: var(--text-primary);
-        }
-
-        /* Hero specific */
         .mm-hero {
             position: relative;
             min-height: 420px;
@@ -103,7 +108,6 @@
             background: linear-gradient(135deg, #1A0A0A 0%, #2D0F0F 50%, #1A1A2E 100%);
             overflow: hidden;
         }
-
         .mm-hero::before {
             content: '';
             position: absolute;
@@ -111,13 +115,11 @@
             background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2000&fit=crop') center/cover no-repeat;
             opacity: 0.15;
         }
-
         .mm-hero-gradient {
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, rgba(255,71,87,0.3) 0%, rgba(255,107,53,0.2) 50%, rgba(26,26,46,0.8) 100%);
         }
-
         .mm-hero-floating-cards {
             position: absolute;
             right: 10%;
@@ -127,7 +129,6 @@
             flex-direction: column;
             gap: 12px;
         }
-
         .mm-float-card {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(15px);
@@ -142,27 +143,22 @@
             font-weight: 600;
             animation: floatCard 4s ease-in-out infinite;
         }
-
         .mm-float-card:nth-child(2) { animation-delay: 1s; }
         .mm-float-card:nth-child(3) { animation-delay: 2s; }
-
         @keyframes floatCard {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
-
         .mm-float-icon {
             width: 36px; height: 36px;
             border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
             font-size: 18px;
         }
-
         .mm-float-icon.green { background: rgba(46,213,115,0.2); }
         .mm-float-icon.orange { background: rgba(255,107,53,0.2); }
         .mm-float-icon.blue { background: rgba(30,144,255,0.2); }
 
-        /* Category section */
         .mm-category-scroll {
             display: flex;
             gap: 14px;
@@ -171,7 +167,6 @@
             scrollbar-width: none;
         }
         .mm-category-scroll::-webkit-scrollbar { display: none; }
-
         .mm-cat-item {
             display: flex;
             flex-direction: column;
@@ -187,7 +182,6 @@
             text-decoration: none;
             color: var(--text-secondary);
         }
-
         .mm-cat-item:hover {
             border-color: var(--primary);
             color: var(--primary);
@@ -195,17 +189,14 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255,71,87,0.12);
         }
-
         .mm-cat-emoji { font-size: 30px; }
         .mm-cat-label { font-size: 12px; font-weight: 700; text-align: center; white-space: nowrap; }
 
-        /* Offer banner cards */
         .mm-offer-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-
         .mm-offer-card {
             border-radius: 16px;
             padding: 24px;
@@ -217,52 +208,30 @@
             flex-direction: column;
             justify-content: flex-end;
         }
-
         .mm-offer-card::before {
             content: '';
             position: absolute;
-            top: -40px;
-            right: -40px;
-            width: 150px;
-            height: 150px;
+            top: -40px; right: -40px;
+            width: 150px; height: 150px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
         }
-
         .mm-offer-card::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            right: 20px;
-            width: 80px;
-            height: 80px;
+            bottom: -20px; right: 20px;
+            width: 80px; height: 80px;
             border-radius: 50%;
             background: rgba(255,255,255,0.08);
         }
-
         .mm-offer-card.red { background: linear-gradient(135deg, #FF4757, #C0392B); }
         .mm-offer-card.orange { background: linear-gradient(135deg, #FF6B35, #E55B2A); }
         .mm-offer-card.green { background: linear-gradient(135deg, #2ED573, #1A8F4A); }
-
-        .mm-offer-percent {
-            font-size: 42px;
-            font-weight: 900;
-            line-height: 1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mm-offer-text {
-            font-size: 14px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
+        .mm-offer-percent { font-size: 42px; font-weight: 900; line-height: 1; position: relative; z-index: 1; }
+        .mm-offer-text { font-size: 14px; opacity: 0.9; position: relative; z-index: 1; }
         .mm-offer-badge {
             position: absolute;
-            top: 14px;
-            right: 14px;
+            top: 14px; right: 14px;
             background: rgba(255,255,255,0.2);
             border-radius: 8px;
             padding: 4px 10px;
@@ -272,13 +241,11 @@
             z-index: 1;
         }
 
-        /* Testimonials */
         .mm-testimonials {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
-
         .mm-testimonial-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -286,43 +253,17 @@
             padding: 24px;
             transition: all 0.3s ease;
         }
-
         .mm-testimonial-card:hover {
             border-color: var(--primary);
             box-shadow: 0 8px 25px rgba(255,71,87,0.1);
         }
-
-        .mm-test-stars {
-            color: #FFC312;
-            font-size: 16px;
-            margin-bottom: 12px;
-        }
-
-        .mm-test-text {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .mm-test-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .mm-test-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
+        .mm-test-stars { color: #FFC312; font-size: 16px; margin-bottom: 12px; }
+        .mm-test-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+        .mm-test-author { display: flex; align-items: center; gap: 12px; }
+        .mm-test-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
         .mm-test-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
         .mm-test-order { font-size: 12px; color: var(--text-muted); }
 
-        /* Newsletter */
         .mm-newsletter {
             background: linear-gradient(135deg, #FF4757 0%, #FF6B35 100%);
             border-radius: 24px;
@@ -332,7 +273,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .mm-newsletter::before {
             content: '';
             position: absolute;
@@ -341,7 +281,6 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.08);
         }
-
         .mm-newsletter::after {
             content: '';
             position: absolute;
@@ -350,28 +289,12 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.06);
         }
-
-        .mm-newsletter h2 {
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mm-newsletter p {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 28px;
-            position: relative;
-            z-index: 1;
-        }
-
+        .mm-newsletter h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; position: relative; z-index: 1; }
+        .mm-newsletter p { font-size: 16px; opacity: 0.9; margin-bottom: 28px; position: relative; z-index: 1; }
         .mm-newsletter-form {
             display: flex;
             max-width: 440px;
             margin: 0 auto;
-            gap: 0;
             background: white;
             border-radius: 12px;
             overflow: hidden;
@@ -379,7 +302,6 @@
             z-index: 1;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
-
         .mm-newsletter-form input {
             flex: 1;
             padding: 16px 20px;
@@ -388,7 +310,6 @@
             font-size: 14px;
             color: #1A1A2E;
         }
-
         .mm-newsletter-form button {
             background: linear-gradient(135deg, #FF4757, #C0392B);
             color: white;
@@ -416,12 +337,10 @@
     <!-- NAVBAR -->
     <nav class="mm-navbar">
         <a href="home.jsp" class="mm-logo">MealMate</a>
-
         <form class="mm-nav-search" action="SearchServlet" method="GET">
             <i class="fa-solid fa-magnifying-glass mm-nav-search-icon"></i>
             <input type="text" name="searchQuery" placeholder="Search restaurants, cuisines, dishes...">
         </form>
-
         <div class="mm-nav-actions">
             <span class="mm-greeting">Hi, <b><%= firstName != null ? firstName : "Foodie" %></b></span>
             <a href="home.jsp" class="mm-nav-link"><i class="fa-solid fa-house"></i> Home</a>
@@ -465,8 +384,6 @@
                 </span>
             </div>
         </div>
-
-        <!-- Floating Cards -->
         <div class="mm-hero-floating-cards">
             <div class="mm-float-card">
                 <div class="mm-float-icon green">🛵</div>
@@ -570,16 +487,27 @@
 
                 if (restaurantList != null && !restaurantList.isEmpty()) {
                     for (Restaurant r : restaurantList) {
+                        String rName = r.getName() != null ? r.getName().toLowerCase() : "";
                         String cuisine = r.getCuisineType() != null ? r.getCuisineType().toLowerCase() : "";
                         String currentImageUrl = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800";
-                        
+
+                        boolean foundByName = false;
                         for (String key : imageMap.keySet()) {
-                            if (cuisine.contains(key)) {
+                            if (rName.contains(key)) {
                                 currentImageUrl = imageMap.get(key);
+                                foundByName = true;
                                 break;
                             }
                         }
-                        
+                        if (!foundByName) {
+                            for (String key : imageMap.keySet()) {
+                                if (cuisine.contains(key)) {
+                                    currentImageUrl = imageMap.get(key);
+                                    break;
+                                }
+                            }
+                        }
+
                         String badge = badgeTypes[cardIndex % badgeTypes.length];
                         String badgeClass = badgeClasses[cardIndex % badgeClasses.length];
                         cardIndex++;
@@ -732,7 +660,6 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Hover effect on restaurant cards
         document.querySelectorAll('.mm-restaurant-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const bg = this.querySelector('.mm-card-bg');
